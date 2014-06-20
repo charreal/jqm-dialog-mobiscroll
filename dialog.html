@@ -1,0 +1,80 @@
+<!DOCTYPE html> 
+<html>
+  <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<title>Dialog</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/jquery.mobile-1.4.2.min.css">
+
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.mobile-1.4.2.min.js"></script>
+
+  </head> 
+<body> 
+
+  <div data-role="page" id="mobiscroll" data-dialog="true">
+    <link rel="stylesheet" type="text/css" href="assets/css/mobiscroll.custom-2.6.2.min.css" />
+    <style>
+      #clearBtn {
+        float: left;
+      }
+
+      #doneBtn {
+        /*margin-left: 10px;*/
+        float: right;
+        background: #84d9e1;
+      }
+
+    </style>
+
+
+    <div data-role="header" data-theme="d">
+      <h1>Mobiscroll</h1>
+    </div>
+
+    <div data-role="content" data-theme="c">
+
+      <div class="mobiContainer">
+        <input id="mobiInput" />
+      </div>
+      <a href="#" id="doneBtn" data-rel="back" class="ui-btn ui-icon-check ui-btn-icon-left">ok</a>
+      <a href="#" id="clearBtn" data-rel="back" class="ui-btn ui-icon-check ui-btn-icon-left">cancel</a>
+    </div>
+
+    <script type="text/javascript" src="assets/js/mobiscroll.custom-2.6.2.min.js"></script>
+
+    <script>
+      // $(document).on('pageshow', '#mobiscroll', function(event) {
+      $(document).on('pagecontainershow', function(event) {
+        $('#mobiInput').mobiscroll()
+                 .scroller({
+                    theme: 'ios',
+                    mode: 'scroller',
+                    display: 'bubble',
+                    wheels: [ // Wheel groups array
+                      [ // First wheel group
+                        {
+                          label: 'Number', 
+                          values: ['9','8','7','6','5','4','3','2','1']
+                        }
+                      ]
+                    ],
+                    onSelect: function(valueText, inst) {
+                    }
+                });
+        var valueArray = ["2"];
+        $('#mobiInput').mobiscroll('setValue', valueArray, true);
+
+      });
+
+      // $(document).on('pagehide', '#mobiscroll', function(event) {
+      $(document).on('pagecontainerhide', function(event) {
+        console.log('pagehide mobiscroll');
+        $(document).unbind('pageshow');
+        $(document).unbind('pagehide');
+      });
+
+    </script>
+  </div><!-- dialog -->
+</body>
+</html>

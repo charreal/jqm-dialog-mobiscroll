@@ -1,0 +1,1 @@
+Illustrate issue with mobiscroll's setValue in a jQM dialog
